@@ -1,0 +1,19 @@
+.nav {
+    display: flex;
+    background-color: green;
+    flex-direction: column;
+    width: 10%;
+    align-items: center;
+}
+
+.item {
+    margin-top: 10px;
+}
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item.active a{
+    color: gold;
+}

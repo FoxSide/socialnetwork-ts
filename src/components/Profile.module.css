@@ -1,0 +1,12 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    width: 90%;
+    margin-left: 5px;
+}
+
+.profile img {
+    width: 500px;
+    height: 200px;
+}
