@@ -7,7 +7,7 @@ export const Profile = () => {
     <div className={s.profile}>
       <img src={'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg'} alt={'main logo'}/>
       <div>
-        ava+desctiption
+        Ava+desctiption
       </div>
       <MyPosts/>
     </div>
