@@ -1,0 +1,28 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    align-items: center;
+}
+
+.item {
+    margin-top: 30px;
+    font-weight: bold;
+}
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: white;
+    text-decoration: none;
+    background: orange;
+    padding: 10px 15px;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+.item.active a{
+    color: orange;
+}

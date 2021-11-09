@@ -1,9 +1,10 @@
 .profile {
     display: flex;
     flex-direction: column;
-    background-color: aquamarine;
     width: 90%;
-    margin-left: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    border-left: 2px solid;
 }
 
 .profile img {
