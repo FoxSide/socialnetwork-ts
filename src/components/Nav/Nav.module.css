@@ -24,6 +24,6 @@
     transition: 0.2s;
 }
 
-.item.active a{
-    color: orange;
+.item a.active{
+    color: red;
 }
