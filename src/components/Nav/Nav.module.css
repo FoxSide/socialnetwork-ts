@@ -25,5 +25,9 @@
 }
 
 .item a.active{
-    color: red;
+    text-decoration: none;
+    background: coral;
+    padding: 10px 15px;
+    border-radius: 30px;
+    transition: 0.2s;
 }
