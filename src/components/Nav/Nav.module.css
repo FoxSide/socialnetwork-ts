@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 10%;
     align-items: center;
+    border-right: 2px solid;
 }
 
 .item {

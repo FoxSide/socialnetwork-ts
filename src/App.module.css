@@ -1,0 +1,22 @@
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.appWrapperBody {
+    display: flex;
+    width: 100%;
+    height: 85vh;
+}
+
+.appWrapperContent {
+    width: 90%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+
+

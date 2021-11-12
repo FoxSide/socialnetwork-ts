@@ -1,13 +1,8 @@
 .profile {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    padding-left: 10px;
-    padding-top: 10px;
-    border-left: 2px solid;
 }
 
 .profile img {
-    width: 500px;
-    height: 200px;
+    width: 100%;
 }
