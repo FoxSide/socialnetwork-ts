@@ -1,0 +1,14 @@
+.dialogs {
+    display: flex;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+}
