@@ -1,15 +1,18 @@
 import React from "react";
 import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
+import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
+import {postPropsType} from "../../redux/State";
 
-export const Profile = () => {
+type ProfilePropsType = {
+  posts: Array<postPropsType>
+}
+
+export const Profile = (props: ProfilePropsType) => {
   return (
     <div className={s.profile}>
-      <img src={'https://ic.pics.livejournal.com/stepbystep_hdr/11824494/1199598/1199598_original.jpg'} alt={'main logo'}/>
-      <div>
-        Ava+desctiption
-      </div>
-      <MyPosts/>
+      <ProfileInfo/>
+      <MyPosts posts={props.posts}/>
     </div>
   )
 }

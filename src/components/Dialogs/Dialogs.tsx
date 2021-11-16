@@ -1,20 +1,24 @@
 import React from "react";
 import s from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
+import {MessageItem} from "./Message/Message";
+import {DialogItem} from "./DialogItem/DialogsItem";
+import {messagesPagePropsType} from "../../redux/State";
 
-export const Dialogs = () => {
+type DialogsPropsType = {
+  messagesPage: messagesPagePropsType
+}
+
+export const Dialogs: React.FC<DialogsPropsType> = (props ) => {
+  let dialogsElement = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+  let messagesElement = props.messagesPage.messages.map(m => <MessageItem message={m.massage}/>)
+
   return (
     <div className={s.dialogs}>
       <div className={s.user}>
-        <div><NavLink to='/dialogs/1'>Ed</NavLink></div>
-        <div><NavLink to='/dialogs/2'>Viktoria</NavLink></div>
-        <div><NavLink to='/dialogs/3'>Ned</NavLink></div>
-        <div><NavLink to='/dialogs/4'>Varova</NavLink></div>
+        {dialogsElement}
       </div>
       <div className={s.message}>
-        <div>Hello!</div>
-        <div>How are you?</div>
-        <div>:)</div>
+        {messagesElement}
       </div>
     </div>
   )
