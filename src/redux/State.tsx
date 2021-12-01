@@ -1,24 +1,4 @@
-export let state: statePropsType = {
-  profilePage: {
-    posts: [
-      {id: 1, message: 'Hi, how are you?', likescount: 3},
-      {id: 2, message: 'It\'s my first post', likescount: 15}
-    ]
-  },
-  messagesPage: {
-    messages: [
-      {id: 1, massage: 'Hello'},
-      {id: 2, massage: 'How are you?'},
-      {id: 3, massage: ':)'},
-    ],
-    dialogs: [
-      {id: 1, name: 'Ed'},
-      {id: 2, name: 'Viktoria'},
-      {id: 3, name: 'Ned'},
-      {id: 4, name: 'Varova'}
-    ]
-  }
-}
+import {rerenderEntireTree} from "../render";
 
 export type postPropsType = {
   id: number
@@ -34,7 +14,7 @@ export type profilePagePropsState = {
 }
 export type messagesPropsType = {
   id: number
-  massage: string
+  message: string
 }
 export type messagesPagePropsType = {
   messages: Array<messagesPropsType>
@@ -43,4 +23,45 @@ export type messagesPagePropsType = {
 export type statePropsType = {
   profilePage: profilePagePropsState
   messagesPage: messagesPagePropsType
+}
+
+export let state: statePropsType = {
+  profilePage: {
+    posts: [
+      {id: 1, message: 'Hi, how are you?', likescount: 3},
+      {id: 2, message: 'It\'s my first post', likescount: 15}
+    ]
+  },
+  messagesPage: {
+    messages: [
+      {id: 1, message: 'Hello'},
+      {id: 2, message: 'How are you?'},
+      {id: 3, message: ':)'},
+    ],
+    dialogs: [
+      {id: 1, name: 'Ed'},
+      {id: 2, name: 'Viktoria'},
+      {id: 3, name: 'Ned'},
+      {id: 4, name: 'Varova'}
+    ]
+  }
+}
+
+export const addPost = (postMessage: string) => {
+  let newPost:postPropsType = {
+    id: 5,
+    message: postMessage,
+    likescount: 0
+  }
+  state.profilePage.posts.push(newPost)
+  rerenderEntireTree()
+}
+
+export const addMessage = (textMessage: string) => {
+  let newMessage: messagesPropsType = {
+    id: 4,
+    message: textMessage
+  }
+  state.messagesPage.messages.push(newMessage)
+  rerenderEntireTree()
 }
