@@ -8,7 +8,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {addMessage, state} from "./redux/State";
+import {addMessage, state, updateNewMessageText, updateNewPostText} from "./redux/State";
 import {addPost} from "./redux/State";
 
 
@@ -22,8 +22,15 @@ export const App = () => {
           <Nav/>
           <div className={s.appWrapperContent}>
             <Routes>
-            <Route path='/profile' element={<Profile posts={state.profilePage.posts} addPost={addPost}/>}/>
-            <Route path='/dialogs' element={<Dialogs messagesPage={state.messagesPage} addMessage={addMessage}/>}/>
+            <Route path='/profile' element={<Profile posts={state.profilePage.posts}
+                                                     newPostText={state.profilePage.newPostText}
+                                                     addPost={addPost}
+                                                     updateNewPostText={updateNewPostText}
+            />}/>
+            <Route path='/dialogs/*' element={<Dialogs messagesPage={state.messagesPage}
+                                                     addMessage={addMessage}
+                                                     updateNewMessageText={updateNewMessageText}
+            />}/>
             <Route path='/news' element={<News/>}/>
             <Route path='/music' element={<Music/>}/>
             <Route path='/settings' element={<Settings/>}/>
