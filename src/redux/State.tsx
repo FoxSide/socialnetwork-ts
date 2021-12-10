@@ -1,4 +1,5 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+}
 
 export type postPropsType = {
   id: number
@@ -78,4 +79,8 @@ export const addMessage = (textMessage: string) => {
 export const updateNewMessageText = (newMessage: string) => {
   state.messagesPage.newMessageText = newMessage
   rerenderEntireTree()
+}
+
+export const subscribe = (observer: () => void) => {
+  rerenderEntireTree = observer
 }
