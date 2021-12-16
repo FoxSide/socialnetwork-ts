@@ -1,6 +1,3 @@
-let rerenderEntireTree = () => {
-}
-
 export type postPropsType = {
   id: number
   message: string
@@ -27,60 +24,129 @@ export type statePropsType = {
   profilePage: profilePagePropsState
   messagesPage: messagesPagePropsType
 }
+export type storePropsType = {
+  _state: statePropsType
+  _rerenderEntireTree: () => void
+  subscribe: (observer: () => void) => void
+  getState: () => statePropsType
+  dispatch: (action: ActionsType) => void
+}
+export type ActionsType =
+  AddPostActionType
+  | UpdateNewPostTextActionType
+  | AddMessageActionType
+  | UpdateNewMessageActionType
 
-export let state: statePropsType = {
-  profilePage: {
-    posts: [
-      {id: 1, message: 'Hi, how are you?', likescount: 3},
-      {id: 2, message: 'It\'s my first post', likescount: 15}
-    ],
-    newPostText: ''
+type AddPostActionType = {
+  type: 'ADD-POST'
+  postMessage: string
+}
+type UpdateNewPostTextActionType = {
+  type: 'UPDATE-NEW-POST-TEXT'
+  newText: string
+}
+type AddMessageActionType = {
+  type: 'ADD-MESSAGE'
+  textMessage: string
+}
+type UpdateNewMessageActionType = {
+  type: 'UPDATE-NEW-MESSAGE-TEXT'
+  newMessage: string
+}
+
+export let store: storePropsType = {
+  _state: {
+    profilePage: {
+      posts: [
+        {id: 1, message: 'Hi, how are you?', likescount: 3},
+        {id: 2, message: 'It\'s my first post', likescount: 15}
+      ],
+      newPostText: ''
+    },
+    messagesPage: {
+      messages: [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'How are you?'},
+        {id: 3, message: ':)'},
+      ],
+      dialogs: [
+        {id: 1, name: 'Ed'},
+        {id: 2, name: 'Viktoria'},
+        {id: 3, name: 'Ned'},
+        {id: 4, name: 'Varova'}
+      ],
+      newMessageText: ''
+    }
   },
-  messagesPage: {
-    messages: [
-      {id: 1, message: 'Hello'},
-      {id: 2, message: 'How are you?'},
-      {id: 3, message: ':)'},
-    ],
-    dialogs: [
-      {id: 1, name: 'Ed'},
-      {id: 2, name: 'Viktoria'},
-      {id: 3, name: 'Ned'},
-      {id: 4, name: 'Varova'}
-    ],
-    newMessageText: ''
+  _rerenderEntireTree() {
+  },
+
+  subscribe(observer: () => void) {
+    this._rerenderEntireTree = observer
+  },
+  getState() {
+    return this._state
+  },
+
+  // вариант через if
+  // dispatch(action) {
+  //   if (action.type === 'ADD-POST') {
+  //     let newPost: postPropsType = {
+  //       id: 5,
+  //       message: action.postMessage,
+  //       likescount: 0
+  //     }
+  //     this._state.profilePage.posts.push(newPost)
+  //     this._rerenderEntireTree()
+  //   }
+  //   if (action.type === 'UPDATE-NEW-POST-TEXT') {
+  //     this._state.profilePage.newPostText = action.newText
+  //     this._rerenderEntireTree()
+  //   }
+  //   if (action.type === 'ADD-MESSAGE') {
+  //     let newMessage: messagesPropsType = {
+  //       id: 4,
+  //       message: action.textMessage
+  //     }
+  //     this._state.messagesPage.messages.push(newMessage)
+  //     this._rerenderEntireTree()
+  //   }
+  //   if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+  //     this._state.messagesPage.newMessageText = action.newMessage
+  //     this._rerenderEntireTree()
+  //   }
+  // }
+
+  dispatch(action) {
+    switch (action.type) {
+      case 'ADD-POST':
+        let newPost: postPropsType = {
+          id: 5,
+          message: action.postMessage,
+          likescount: 0
+        }
+        this._state.profilePage.posts.push(newPost)
+        this._rerenderEntireTree();
+        break;
+
+      case 'UPDATE-NEW-POST-TEXT':
+        this._state.profilePage.newPostText = action.newText
+        this._rerenderEntireTree();
+        break;
+
+      case 'ADD-MESSAGE':
+        let newMessage: messagesPropsType = {
+          id: 4,
+          message: action.textMessage
+        }
+        this._state.messagesPage.messages.push(newMessage)
+        this._rerenderEntireTree();
+        break;
+
+      case 'UPDATE-NEW-MESSAGE-TEXT':
+        this._state.messagesPage.newMessageText = action.newMessage
+        this._rerenderEntireTree();
+        break;
+    }
   }
-}
-
-export const addPost = (postMessage: string) => {
-  let newPost: postPropsType = {
-    id: 5,
-    message: postMessage,
-    likescount: 0
-  }
-  state.profilePage.posts.push(newPost)
-  rerenderEntireTree()
-}
-
-export const updateNewPostText = (newText: string) => {
-  state.profilePage.newPostText = newText
-  rerenderEntireTree()
-}
-
-export const addMessage = (textMessage: string) => {
-  let newMessage: messagesPropsType = {
-    id: 4,
-    message: textMessage
-  }
-  state.messagesPage.messages.push(newMessage)
-  rerenderEntireTree()
-}
-
-export const updateNewMessageText = (newMessage: string) => {
-  state.messagesPage.newMessageText = newMessage
-  rerenderEntireTree()
-}
-
-export const subscribe = (observer: () => void) => {
-  rerenderEntireTree = observer
 }
