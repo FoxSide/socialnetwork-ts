@@ -57,7 +57,7 @@ export let store: storePropsType = {
         {id: 3, message: ':)'},
       ],
       dialogs: [
-        {id: 1, name: 'Ed'},
+        {id: 1, name: 'Eduard'},
         {id: 2, name: 'Viktoria'},
         {id: 3, name: 'Ned'},
         {id: 4, name: 'Varova'}
