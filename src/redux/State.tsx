@@ -45,7 +45,7 @@ export let store: storePropsType = {
   _state: {
     profilePage: {
       posts: [
-        {id: 1, message: 'Hi, how are you?', likescount: 3},
+        {id: 1, message: 'Hi, how are you??', likescount: 3},
         {id: 2, message: 'It\'s my first post', likescount: 15}
       ],
       newPostText: ''
