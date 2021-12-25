@@ -1,4 +1,4 @@
-import {ActionsType, postPropsType, profilePagePropsState} from "./State";
+import {ActionsType, postPropsType, profilePagePropsState} from "./store";
 
 export const profileReducer = (state: profilePagePropsState, action: ActionsType) => {
   switch (action.type) {
@@ -19,3 +19,5 @@ export const profileReducer = (state: profilePagePropsState, action: ActionsType
       return state
   }
 }
+export const AddPostAC = () => ({type: "ADD-POST"} as const)
+export const UpdateNewPostTextAC = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)

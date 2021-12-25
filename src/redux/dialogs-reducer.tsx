@@ -1,4 +1,4 @@
-import {ActionsType, messagesPagePropsType, messagesPropsType} from "./State";
+import {ActionsType, messagesPagePropsType, messagesPropsType} from "./store";
 
 export const dialogsReducer = (state: messagesPagePropsType, action: ActionsType) => {
   switch (action.type) {
@@ -18,3 +18,5 @@ export const dialogsReducer = (state: messagesPagePropsType, action: ActionsType
       return state
   }
 }
+export const AddMessageAC = () => ({type: 'ADD-MESSAGE'} as const)
+export const UpdateNewMessageTextAC = (newMessage: string) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: newMessage} as const)

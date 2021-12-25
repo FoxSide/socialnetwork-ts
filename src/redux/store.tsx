@@ -34,11 +34,23 @@ export type storePropsType = {
   getState: () => statePropsType
   dispatch: (action: ActionsType) => void
 }
-export type ActionsType =
-  ReturnType<typeof AddPostAC>
-  | ReturnType<typeof UpdateNewPostTextAC>
-  | ReturnType<typeof AddMessageAC>
-  | ReturnType<typeof UpdateNewMessageTextAC>
+export type ActionsType = AddPostACProsType | UpdateNewPostTextACProsType | AddMessageACProsType | UpdateNewMessageTextACProsType
+
+export type AddPostACProsType = {
+  type: "ADD-POST"
+}
+export type UpdateNewPostTextACProsType = {
+  type: 'UPDATE-NEW-POST-TEXT'
+  newText: string
+}
+export type AddMessageACProsType = {
+  type: 'ADD-MESSAGE'
+}
+export type UpdateNewMessageTextACProsType = {
+  type: 'UPDATE-NEW-MESSAGE-TEXT'
+  newMessage: string
+}
+
 
 
 export let store: storePropsType = {
@@ -111,7 +123,7 @@ export let store: storePropsType = {
   }
 }
 
-export const AddPostAC = () => ({type: "ADD-POST"} as const)
-export const UpdateNewPostTextAC = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
-export const AddMessageAC = () => ({type: 'ADD-MESSAGE'} as const)
-export const UpdateNewMessageTextAC = (newMessage: string) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: newMessage} as const)
+// export const AddPostAC = () => ({type: "ADD-POST"} as const)
+// export const UpdateNewPostTextAC = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
+// export const AddMessageAC = () => ({type: 'ADD-MESSAGE'} as const)
+// export const UpdateNewMessageTextAC = (newMessage: string) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: newMessage} as const)
