@@ -11,7 +11,7 @@ import {Settings} from "./components/Settings/Settings";
 import {storePropsType} from "./redux/store";
 
 type AppPropsType = {
-  store: storePropsType
+  store: any
 }
 
 export const App = (props: AppPropsType) => {

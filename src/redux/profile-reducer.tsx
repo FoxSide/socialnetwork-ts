@@ -1,6 +1,16 @@
-import {ActionsType, postPropsType, profilePagePropsState} from "./store";
+import {ActionsType, postPropsType} from "./store";
 
-export const profileReducer = (state: profilePagePropsState, action: ActionsType) => {
+type initialStatePropstype = typeof initialState
+
+let initialState = {
+  posts: [
+    {id: 1, message: 'Hi, how are you??', likescount: 3},
+    {id: 2, message: 'It\'s my first post', likescount: 15}
+  ],
+  newPostText: ''
+}
+
+export const profileReducer = (state: initialStatePropstype = initialState, action: ActionsType) => {
   switch (action.type) {
     case 'ADD-POST':
       let newPost: postPropsType = {
