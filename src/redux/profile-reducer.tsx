@@ -1,4 +1,4 @@
-import {ActionsType, postPropsType} from "./store";
+import {ActionsType, postPropsType} from "./types";
 
 type initialStatePropstype = typeof initialState
 

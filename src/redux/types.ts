@@ -7,7 +7,7 @@ export type dialogsPropsType = {
   id: number
   name: string
 }
-export type profilePagePropsState = {
+export type profilePagePropsType = {
   posts: Array<postPropsType>
   newPostText: string
 }
@@ -21,7 +21,7 @@ export type messagesPagePropsType = {
   newMessageText: string
 }
 export type statePropsType = {
-  profilePage: profilePagePropsState
+  profilePage: profilePagePropsType
   messagesPage: messagesPagePropsType
 }
 export type storePropsType = {
