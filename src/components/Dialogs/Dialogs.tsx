@@ -10,12 +10,12 @@ type DialogsPropsType = {
   messagesPage: messagesPagePropsType
 }
 
-export const Dialogs: React.FC<DialogsPropsType> = (props ) => {
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
   const dialogsElement = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
   const messagesElement = props.messagesPage.messages.map(m => <MessageItem message={m.message}/>)
 
   const onAddMessage = () => {
-      props.addMessage()
+    props.addMessage()
   }
 
   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,7 +29,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (props ) => {
       </div>
       <div className={s.message}>
         {messagesElement}
-        <textarea placeholder={'Enter your message'} value={props.messagesPage.newMessageText} onChange={onChangeHandler}/>
+        <textarea placeholder={'Enter your message'} value={props.messagesPage.newMessageText}
+                  onChange={onChangeHandler}/>
         <button onClick={onAddMessage}>Add message</button>
       </div>
     </div>
