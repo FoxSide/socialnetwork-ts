@@ -1,12 +1,17 @@
-import {CombinedState, Store} from "redux";
+// НЕ ИСПОЛЬЗУЕТСЯ!!!
+// НЕ ИСПОЛЬЗУЕТСЯ!!!
+// НЕ ИСПОЛЬЗУЕТСЯ!!!
+
 
 //Типы для Profile
 
-export type profilePagePropsType = {
+import {CombinedState, Store} from "redux";
+
+type profilePagePropsType = {
   posts: Array<postPropsType>
   newPostText: string
 }
-export type postPropsType = {
+type postPropsType = {
   id: number
   message: string
   likescount: number
@@ -14,42 +19,42 @@ export type postPropsType = {
 
 // Типы для Dialogs
 
-export type messagesPagePropsType = {
+type messagesPagePropsType = {
   messages: Array<messagesPropsType>
   dialogs: Array<dialogsPropsType>
   newMessageText: string
 }
-export type dialogsPropsType = {
+type dialogsPropsType = {
   id: number
   name: string
 }
-export type messagesPropsType = {
+type messagesPropsType = {
   id: number
   message: string
 }
 
 // Типы экшенов
 
-export type ActionsType = AddMessageACProsType | UpdateNewMessageTextACProsType | AddPostACProsType | UpdateNewPostTextACProsType
+type ActionsType = AddMessageACProsType | UpdateNewMessageTextACProsType | AddPostACProsType | UpdateNewPostTextACProsType
 
-export type AddPostACProsType = {
+type AddPostACProsType = {
   type: "ADD-POST"
 }
-export type UpdateNewPostTextACProsType = {
+type UpdateNewPostTextACProsType = {
   type: 'UPDATE-NEW-POST-TEXT'
   newText: string
 }
-export type AddMessageACProsType = {
+type AddMessageACProsType = {
   type: 'ADD-MESSAGE'
 }
-export type UpdateNewMessageTextACProsType = {
+type UpdateNewMessageTextACProsType = {
   type: 'UPDATE-NEW-MESSAGE-TEXT'
   newMessage: string
 }
 
 // Тип для стора из редакс
 
-export type StoreType = {
+type StoreType = {
   store: Store<CombinedState<{
     profilePage: profilePagePropsType
     messagesPage: messagesPagePropsType
