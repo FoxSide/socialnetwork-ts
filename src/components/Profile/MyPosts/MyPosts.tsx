@@ -19,7 +19,7 @@ export const MyPosts = (props: MyPostsPropType) => {
     <div>
       <h3>My posts</h3>
       <div>
-        <textarea placeholder={'Enter your post...'} value={props.newPostText} onChange={onChangeHandler}/>
+        <textarea placeholder={'Enter your post'} value={props.newPostText} onChange={onChangeHandler}/>
         <div>
           <button onClick={onAddPost}>Add Post</button>
         </div>
