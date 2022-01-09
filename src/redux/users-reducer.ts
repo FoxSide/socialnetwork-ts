@@ -1,14 +1,13 @@
 export type InitialStatePropsType = typeof initialState
 export type UsersType = {
+  name: string
   id: number
-  photoUrl: string
+  photos: {
+    small: null
+    large: null
+  },
+  status: null,
   followed: boolean
-  fullName: string
-  status: string
-  location: {
-    city: string
-    country: string
-  }
 }
 type ActionsType = FollowACType | UnFollowACType | SetUsersACType
 type FollowACType = {
