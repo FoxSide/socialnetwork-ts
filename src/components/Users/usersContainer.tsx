@@ -1,4 +1,4 @@
-import {Users} from "./users";
+import {Users} from "./usersC";
 import {connect} from "react-redux";
 import {AppStatetype} from "../../redux/redux-store";
 import {Dispatch} from "redux";
