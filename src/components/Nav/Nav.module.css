@@ -1,7 +1,8 @@
 .nav {
     display: flex;
     flex-direction: column;
-    width: 10%;
+    height: 100%;
+    width: 150px;
     align-items: center;
     border-right: 2px solid;
 }
