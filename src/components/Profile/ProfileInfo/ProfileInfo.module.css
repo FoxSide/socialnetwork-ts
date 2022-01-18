@@ -1,0 +1,18 @@
+.photo {
+    width: 200px;
+    height: 200px;
+}
+
+.body {
+    display: flex;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.title {
+    font-weight: bold;
+}

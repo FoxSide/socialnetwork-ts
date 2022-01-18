@@ -54,15 +54,17 @@ export class UsersAPIComponent extends React.Component<UserspropsType> {
 
   render() {
     return <>
-      {this.props.isFetching ? <Preloader/> : null}
-      <Users totalUsersCount={this.props.totalUsersCount}
-             pageSize={this.props.pageSize}
-             currentPage={this.props.currentPage}
-             onPageChanged={this.onPageChanged}
-             users={this.props.users}
-             unFollow={this.props.unFollow}
-             follow={this.props.follow}
-      />
+      {this.props.isFetching ?
+        <Preloader/> :
+        <Users totalUsersCount={this.props.totalUsersCount}
+               pageSize={this.props.pageSize}
+               currentPage={this.props.currentPage}
+               onPageChanged={this.onPageChanged}
+               users={this.props.users}
+               unFollow={this.props.unFollow}
+               follow={this.props.follow}
+        />}
+
     </>
   }
 }
@@ -79,8 +81,8 @@ const mapStateToProps = (state: AppStatetype): MapStateToPropsType => {
 
 export const UsersContainer = connect(mapStateToProps, {
   follow: followAC,
-  unFollow:unFollowAC,
-  setUsers:setUsersAC,
+  unFollow: unFollowAC,
+  setUsers: setUsersAC,
   setCurrentPage: setCurrentPageAC,
   setTotalUserCount: setTotalCountAC,
   toggleIsFetching: toggleIsFetchingAC

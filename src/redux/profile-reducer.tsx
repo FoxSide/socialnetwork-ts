@@ -1,16 +1,22 @@
+import {ProfileType} from "../components/Profile/ProfileContainer";
+
 export type InitialStatePropsType = typeof initialState
 export type postPropsType = {
   id: number
   message: string
   likescount: number
 }
-type ActionsType = AddPostACProsType | UpdateNewPostTextACProsType
-type AddPostACProsType = {
+type ActionsType = AddPostACType | UpdateNewPostTextACType | SetUserProfileACType
+type AddPostACType = {
   type: "ADD-POST"
 }
-type UpdateNewPostTextACProsType = {
+type UpdateNewPostTextACType = {
   type: 'UPDATE-NEW-POST-TEXT'
   newText: string
+}
+type SetUserProfileACType = {
+  type: 'SET-USER-PROFILE'
+  profile: ProfileType
 }
 
 let initialState = {
@@ -18,7 +24,8 @@ let initialState = {
     {id: 1, message: 'Hi, how are you??', likescount: 3},
     {id: 2, message: 'It\'s my first post', likescount: 15}
   ] as Array<postPropsType>,
-  newPostText: ''
+  newPostText: '',
+  profile: null
 }
 
 export const profileReducer = (state: InitialStatePropsType = initialState, action: ActionsType): InitialStatePropsType => {
@@ -35,15 +42,18 @@ export const profileReducer = (state: InitialStatePropsType = initialState, acti
       stateCopy.newPostText = ''
       return stateCopy
     }
-
     case 'UPDATE-NEW-POST-TEXT': {
       let stateCopy = {...state}
       stateCopy.newPostText = action.newText
       return stateCopy
     }
+    case 'SET-USER-PROFILE': {
+      return {...state, profile: action.profile} as InitialStatePropsType
+    }
     default:
       return state
   }
 }
-export const AddPostAC = () => ({type: "ADD-POST"} as const)
-export const UpdateNewPostTextAC = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
+export const AddPostAC = (): AddPostACType => ({type: "ADD-POST"})
+export const UpdateNewPostTextAC = (newText: string): UpdateNewPostTextACType => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText})
+export const SetUserProfileAC = (profile: ProfileType): SetUserProfileACType => ({type: 'SET-USER-PROFILE', profile} )
