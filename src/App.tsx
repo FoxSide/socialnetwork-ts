@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './App.module.css'
-import {Header} from "./components/Header/Header";
 import {Nav} from "./components/Nav/Nav";
 import {Route, Routes} from "react-router-dom";
 import {News} from "./components/News/News";
@@ -9,11 +8,12 @@ import {Settings} from "./components/Settings/Settings";
 import {DialogsContainer} from "./components/Dialogs/Message/DialogsContainer";
 import {UsersContainer} from "./components/Users/usersContainer";
 import {ProfileContainer} from "./components/Profile/ProfileContainer";
+import {HeaderContainer} from "./components/Header/HeaderContainer";
 
 export const App = () => {
   return (
       <div className={s.appWrapper}>
-        <Header/>
+        <HeaderContainer/>
         <div className={s.appWrapperBody}>
           <Nav/>
           <div className={s.appWrapperContent}>
