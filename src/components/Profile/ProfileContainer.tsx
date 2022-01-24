@@ -1,17 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Profile} from "./Profile";
 import axios from "axios";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppStatetype} from "../../redux/redux-store";
 import {SetUserProfileAC} from "../../redux/profile-reducer";
+import {useParams} from "react-router-dom";
 
-type ProfilePropstype = MapStateToPropsType & MapDispatchToPropsType
-type MapDispatchToPropsType = {
-  setUserProfile: (profile: any) => void
-}
-type MapStateToPropsType = {
-  profile: ProfileType
-}
 type ContactsType = {
   facebook: string,
   website: null,
@@ -36,25 +30,22 @@ export type ProfileType = {
   photos: PhotosType
 } | null
 
-class ProfileContainer extends React.Component<ProfilePropstype> {
-  componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+export const ProfileContainer = () => {
+  const state = useSelector((state: AppStatetype) => state.profilePage)
+  const dispatch = useDispatch()
+  let {userId} = useParams()
+  if (!userId) {
+    userId = '2'
+  }
+  useEffect(() => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
       .then(response => {
-        this.props.setUserProfile(response.data)
+        dispatch(SetUserProfileAC(response.data))
       })
-  }
-
-  render() {
-    return (
-      <div>
-        <Profile profile={this.props.profile}/>
-      </div>
-    )
-  }
+  }, [])
+  return (
+    <div>
+      <Profile profile={state.profile}/>
+    </div>
+  )
 }
-
-let mapStateToProps = (state: AppStatetype): MapStateToPropsType => ({
-  profile: state.profilePage.profile
-})
-
-export default connect(mapStateToProps, {setUserProfile: SetUserProfileAC})(ProfileContainer)
