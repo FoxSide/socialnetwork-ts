@@ -14,7 +14,7 @@ export const Header = (props: HeaderPropsType) => {
     <header className={s.header}>
       <img src={logo} alt={'logo'}/>
       <div className={s.loginBlock}>
-        {props.state.isAuth ? props.state.login : <NavLink to={'/login'}>Login</NavLink>}
+        {props.state.isAuth ? 'Logout' : <NavLink to={'/login'}>Login</NavLink>}
       </div>
     </header>
   )

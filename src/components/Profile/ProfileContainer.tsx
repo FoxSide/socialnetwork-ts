@@ -35,7 +35,7 @@ export const ProfileContainer = () => {
   const dispatch = useDispatch()
   let {userId} = useParams()
   if (!userId) {
-    userId = '2'
+    userId = '21580'
   }
   useEffect(() => {
     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
