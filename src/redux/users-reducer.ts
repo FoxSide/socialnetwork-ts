@@ -17,6 +17,7 @@ type ActionsType =
   | SetTotalCountACType
   | ToggleIsFetchingACType
   | SetFirstPageACType
+  | ToggleIsFollowingACType
 type FollowACType = {
   type: 'FOLLOW'
   userID: number
@@ -46,6 +47,10 @@ type SetFirstPageACType = {
   fistPage: number
   lastPage: number
 }
+type ToggleIsFollowingACType = {
+  type: 'TOGGLE-IS-FOLLOWING'
+  isFetching: boolean
+}
 
 let initialState = {
   users: [] as Array<UsersType>,
@@ -53,6 +58,7 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
+  followingInProgress: false
 }
 
 export const usersReducer = (state: InitialStatePropsType = initialState, action: ActionsType): InitialStatePropsType => {
@@ -72,6 +78,12 @@ export const usersReducer = (state: InitialStatePropsType = initialState, action
     case 'TOGGLE-IS-FETCHING' : {
       return {...state, isFetching: action.status}
     }
+    case 'TOGGLE-IS-FOLLOWING': {
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+      }
+    }
     default:
       return state
   }
@@ -83,4 +95,5 @@ export const setUsersAC = (users: Array<UsersType>) => ({type: 'SET-USERS', user
 export const setCurrentPageAC = (currentPage: number) => ({type: 'SET-CURRENT-PAGE', currentPage})
 export const setTotalCountAC = (totalUsersCount: number) => ({type: 'SET-TOTAL-COUNT', totalUsersCount})
 export const toggleIsFetchingAC = (status: boolean) => ({type: 'TOGGLE-IS-FETCHING', status})
+export const toggleIsFollowingAC = (isFetching: boolean) => ({type: 'TOGGLE-IS-FOLLOWING', isFetching,})
 
