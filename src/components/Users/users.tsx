@@ -25,7 +25,7 @@ const Users = (props: PropsType) => {
   for (let i = 1; i <= pagesCount; i++) {
     allPages.push(i)
   }
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= 10; i++) {
     showPages.push(i)
   }
 
