@@ -1,4 +1,6 @@
 import {ProfileType} from "../components/Profile/ProfileContainer";
+import {Dispatch} from "redux";
+import {profileAPI} from "../api/api";
 
 export type InitialStatePropsType = typeof initialState
 export type postPropsType = {
@@ -55,5 +57,14 @@ export const profileReducer = (state: InitialStatePropsType = initialState, acti
   }
 }
 export const AddPostAC = (): AddPostACType => ({type: "ADD-POST"})
-export const UpdateNewPostTextAC = (newText: string): UpdateNewPostTextACType => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText})
-export const SetUserProfileAC = (profile: ProfileType): SetUserProfileACType => ({type: 'SET-USER-PROFILE', profile} )
+export const UpdateNewPostTextAC = (newText: string): UpdateNewPostTextACType => ({
+  type: 'UPDATE-NEW-POST-TEXT',
+  newText: newText
+})
+export const SetUserProfileAC = (profile: ProfileType): SetUserProfileACType => ({type: 'SET-USER-PROFILE', profile})
+
+export const setUserThunk = (userId: string | undefined, dispatch: Dispatch) => {
+    profileAPI.getProfile(userId).then(response => {
+      dispatch(SetUserProfileAC(response.data))
+    })
+}

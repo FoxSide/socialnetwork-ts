@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
 import {Profile} from "./Profile";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStatetype} from "../../redux/redux-store";
-import {SetUserProfileAC} from "../../redux/profile-reducer";
+import {setUserThunk} from "../../redux/profile-reducer";
 import {useParams} from "react-router-dom";
 
 type ContactsType = {
@@ -38,11 +37,8 @@ export const ProfileContainer = () => {
     userId = '21580'
   }
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-      .then(response => {
-        dispatch(SetUserProfileAC(response.data))
-      })
-  }, [])
+    setUserThunk(userId, dispatch)
+  }, [userId, dispatch])
   return (
     <div>
       <Profile profile={state.profile}/>

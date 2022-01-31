@@ -3,7 +3,6 @@ import s from "./users.module.css";
 import userPhoto from "../../images/user.png";
 import {UsersType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
 
 type PropsType = {
   totalUsersCount: number
@@ -11,10 +10,9 @@ type PropsType = {
   currentPage: number
   onPageChanged: (p: number) => void
   users: Array<UsersType>
-  unFollow: (usersId: number) => void
-  follow: (userId: number) => void
-  toggleIsFollowing: (isFetching: boolean) => void
-  followingInProgress: boolean
+  followingInProgress: number[]
+  followThunk: (userId: number) => void
+  unFollowThunk: (userId: number) => void
 }
 
 const Users = (props: PropsType) => {
@@ -25,7 +23,7 @@ const Users = (props: PropsType) => {
   for (let i = 1; i <= pagesCount; i++) {
     allPages.push(i)
   }
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= 10; i++) {
     showPages.push(i)
   }
 
@@ -44,24 +42,11 @@ const Users = (props: PropsType) => {
           </div>
           <div>
             {u.followed
-              ? <button disabled={props.followingInProgress} onClick={() => {
-                props.toggleIsFollowing(true)
-                followAPI.setUnfollow(u.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.unFollow(u.id)
-                  }
-                  props.toggleIsFollowing(false)
-                })
-
+              ? <button disabled={props.followingInProgress.some(id => id ===u.id)} onClick={() => {
+                props.unFollowThunk(u.id)
               }}>Unfollow</button>
-              : <button disabled={props.followingInProgress} onClick={() => {
-                props.toggleIsFollowing(true)
-                followAPI.setFollow(u.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.follow(u.id)
-                  }
-                  props.toggleIsFollowing(false)
-                })
+              : <button disabled={props.followingInProgress.some(id => id ===u.id)} onClick={() => {
+                props.followThunk(u.id)
               }}>Follow</button>}
           </div>
         </div>
