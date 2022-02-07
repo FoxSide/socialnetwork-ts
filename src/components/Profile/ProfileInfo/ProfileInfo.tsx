@@ -2,6 +2,7 @@ import React from "react";
 import {Preloader} from "../../Common/preloader";
 import {ProfileType} from "../ProfileContainer";
 import s from './ProfileInfo.module.css'
+import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
   profile: ProfileType
@@ -13,12 +14,13 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
   }
   return (
     <div>
-      <img src={'https://ic.pics.livejournal.com/stepbystep_hdr/11824494/1199598/1199598_original.jpg'}
-           alt={'main logo'}/>
+      {/*<img src={'https://ic.pics.livejournal.com/stepbystep_hdr/11824494/1199598/1199598_original.jpg'}*/}
+      {/*     alt={'main logo'}/>*/}
       <div className={s.body}>
         <div className={s.photo}>
           <img src={props.profile.photos.large} alt={'img'}/>
         </div>
+
         <div className={s.info}>
           <span><span className={s.title}>Name: </span> {props.profile.fullName}</span>
           <span><span className={s.title}> About me: </span> {props.profile.aboutMe}</span>
@@ -32,6 +34,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             </div>
           </span>
         </div>
+        <ProfileStatus status={'Hello'}/>
       </div>
     </div>
   )

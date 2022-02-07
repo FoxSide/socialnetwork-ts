@@ -3,7 +3,7 @@ import {Profile} from "./Profile";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStatetype} from "../../redux/redux-store";
 import {setUserThunk} from "../../redux/profile-reducer";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 type ContactsType = {
   facebook: string,
@@ -31,14 +31,22 @@ export type ProfileType = {
 
 export const ProfileContainer = () => {
   const state = useSelector((state: AppStatetype) => state.profilePage)
+  const auth = useSelector((state: AppStatetype) => state.auth)
   const dispatch = useDispatch()
   let {userId} = useParams()
   if (!userId) {
     userId = '21580'
   }
+  let navigate = useNavigate()
+  useEffect(() => {
+    if(!auth.isAuth){
+      return navigate('/login')
+    }
+  })
   useEffect(() => {
     setUserThunk(userId, dispatch)
   }, [userId, dispatch])
+
   return (
     <div>
       <Profile profile={state.profile}/>
