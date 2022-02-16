@@ -22,10 +22,10 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
         </div>
 
         <div className={s.info}>
-          <span><span className={s.title}>Name: </span> {props.profile.fullName}</span>
-          <span><span className={s.title}> About me: </span> {props.profile.aboutMe}</span>
-          <span><span className={s.title}> Looking for a job: </span> {props.profile.lookingForAJobDescription}</span>
-          <span><span className={s.title}> My contacts:</span>
+          <span><span className={s.title}>Name : </span> {props.profile.fullName}</span>
+          <span><span className={s.title}> About me : </span> {props.profile.aboutMe}</span>
+          <span><span className={s.title}> Looking for a job : </span> {props.profile.lookingForAJobDescription}</span>
+          <span><span className={s.title}> My contacts :</span>
             <div className={s.contacts}>
               <li> Facebook: {props.profile.contacts.facebook}</li>
               <li> Twitter: {props.profile.contacts.twitter}</li>
